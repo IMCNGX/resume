@@ -1,0 +1,238 @@
+% FortySecondsCV LaTeX template
+% Copyright © 2019 René Wirnata <rene.wirnata@pandascience.net>
+% Licensed under the 3-Clause BSD License. See LICENSE file for details.
+%
+% Attributions
+% ------------
+% * fortysecondscv is based on the twentysecondcv class by Carmine Spagnuolo 
+%   (cspagnuolo@unisa.it), released under the MIT license and available under
+%   https://github.com/spagnuolocarmine/TwentySecondsCurriculumVitae-LaTex
+% * further attributions are indicated immediately before corresponding code
+
+
+%-------------------------------------------------------------------------------
+%                             ADDITIONAL PACKAGES
+%-------------------------------------------------------------------------------
+\documentclass[
+  a4paper, 
+%   showframes,
+%   maincolor=cvgreen,
+%   sectioncolor=red,
+%   subsectioncolor=orange
+%   sidebarwidth=0.4\paperwidth,
+%   topbottommargin=0.03\paperheight,
+%   leftrightmargin=20pt
+]{fortysecondscv}
+
+% improve word spacing and hyphenation
+\usepackage{microtype}
+\usepackage{ragged2e}
+\usepackage{ctex}
+% take care of proper font encoding
+\ifxetex
+	\usepackage{fontspec}
+	\defaultfontfeatures{Ligatures=TeX}
+% \newfontfamily\headingfont[Path = fonts/]{segoeuib.ttf} % local font
+\else
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+% \usepackage[sfdefault]{noto} % use noto google font
+\fi
+
+% enable mathematical syntax for some symbols like \varnothing
+\usepackage{amssymb}
+
+% bubble diagram configuration
+\usepackage{smartdiagram}
+\smartdiagramset{
+  % defaut font size is \large, so adjust to harmonize with sidebar layout
+  bubble center node font = \footnotesize,
+  bubble node font = \footnotesize,
+  % default: 4cm/2.5cm; make minimum diameter relative to sidebar size
+  bubble center node size = 0.4\sidebartextwidth,
+  bubble node size = 0.25\sidebartextwidth,
+  distance center/other bubbles = 1.5em,
+  % set center bubble color
+  bubble center node color = maincolor!70,
+  % define the list of colors usable in the diagram
+  set color list = {maincolor!10, maincolor!40,
+  maincolor!20, maincolor!60, maincolor!35},
+  % sets the opacity at which the bubbles are shown
+  bubble fill opacity = 0.8,
+}
+
+
+%-------------------------------------------------------------------------------
+%                            PERSONAL INFORMATION
+%-------------------------------------------------------------------------------
+% profile picture
+\cvprofilepic{pics/head.jpg}
+% your name
+\cvname{ \centerline{高~雄}}
+% job title/career
+\cvjobtitle{ \centerline{求职意向：研发类岗位}}
+% date of birth
+\cvbirthday{1997,11,26}
+% short address/location, use \newline if more than 1 line is required
+\cvaddress{内蒙古，鄂尔多斯}
+% phone number
+\cvphone{+86 15594891263}
+% personal website
+\cvsite{768233721@qq.com}
+% email address
+\cvmail{gx711622}
+% pgp key
+\cvkey{https://github.com/IMCNGX}{0xAABBCCDDFF00FF00}
+% add additional information
+% \newcommand{\additional}{some more?}
+
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 1st PAGE
+%-------------------------------------------------------------------------------
+% overwrite default icons and order of personal information
+% \renewcommand{\personaltable}{%
+% 	\begin{personal}[0.8em]
+% 		\circleicon{\faKey}      & \cvkey  \\
+% 		\circleicon{\faAt}       & \cvmail \\
+% 		\circleicon{\faGlobe}    & \cvsite \\
+% 		\circleicon{\faPhone}    & \cvphone \\
+% 		\circleicon{\faEnvelope} & \cvaddress \\
+% 		\circleicon{\faInfo}     & \cvbirthday \\
+% 		% add another line
+% 		\circleicon{\faQuestion} & \additional
+% 	\end{personal}
+% }
+
+% add more profile sections to sidebar on first page
+\addtofrontsidebar{
+	% include gosquare national flags from https://github.com/gosquared/flags;
+	% naming according to ISO 3166-1 alpha-2 country codes
+	\graphicspath{{pics/flags/}}
+
+	
+	\profilesection{职业技能}
+	\barskill{\faSkyatlas}{C/C++}{80}
+	\barskill{\faLinux}{Linux}{70}
+	\barskill{\faAndroid}{ROS}{60}
+	\barskill{\faImage}{OpenCV}{50}
+	\barskill{\faWindowMaximize}{QT}{50}
+	\barskill{\faBolt}{ARM}{70}
+	\barskill{\faCamera}{DSP}{60}
+	
+	\profilesection{\heiti 语言能力}
+	\pointskill{\flag{CN.png}}{中文}{5}
+  	\pointskill{\flag{GB.png}}{英语}{3}
+  	\pointskill{\flag{FR.png}}{俄语}{1}
+	
+	
+}
+
+
+%-------------------------------------------------------------------------------
+%                              SIDEBAR 2nd PAGE
+%-------------------------------------------------------------------------------
+\addtobacksidebar{
+	\profilesection{\heiti 自我介绍}
+	\aboutme{
+	性格沉稳，有责任心，待人友好，乐于团队协作和沟通，适应能力和学习能力强，对计算机视觉，机器人技术和深度学习有非常浓厚的兴趣，自身具有扎实的编程基础和开发相关应用的能力。
+	}
+
+	\profilesection{\heiti 性格分析}
+	\chartlabel{性格特质}
+	\begin{figure}\centering
+		\smartdiagram[bubble diagram]{
+			\textcolor{white}{\textbf{乐观}}, % center bubble	
+			\textcolor{black!90}{果断},
+			\textcolor{black!90}{求异},
+			\textcolor{black!90}{冒险},
+			\textcolor{black!90}{直率},
+			\textcolor{black!90}{尽职}
+		}
+	\end{figure}
+
+	\chartlabel{DISC}
+
+	\wheelchart{4em}{2em}{%
+  	20/3em/maincolor!25/支配型,
+  	20/3em/maincolor!50/影响型,
+  	20/3em/maincolor!75/服从型,
+  	40/3em/maincolor!100/稳健性
+	}
+	
+	\profilesection{\heiti 办公能力}
+		\pointskill{\faWindows}{office}{5}
+ 			\skill[1.8em]{\faCompress}{Word}
+ 			\skill[1.8em]{\faCompress}{Powerpoint}
+		\pointskill{\faAdn}{adobe }{4}
+ 			\skill[1.8em]{\faCompress}{Photoshop}
+ 			\skill[1.8em]{\faCompress}{Premiere}
+	
+
+	\profilesection{\heiti 个人博客}
+	https://blog.csdn.net/gx768233721
+
+}
+
+
+%-------------------------------------------------------------------------------
+%                         TABLE ENTRIES RIGHT COLUMN
+%-------------------------------------------------------------------------------
+\begin{document}
+\makefrontsidebar
+~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}~~~~~~~~\circleicon{\faCertificate}
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 教育背景}
+\begin{cvtable}
+	\cvitem{2016/09-至今}{西安电子科技大学}{空间科学与技术}
+		{In-depth studies on the impact of bamboo nutrition for young pandas and
+		its relation to relaxing, sleeping and snoozing parts of the day.}
+\end{cvtable}
+
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 项目经历}
+\begin{cvtable}
+	\cvitem{2017/11-2019/07}{用于智能送货的无人机与智能车联动系统}{负责人}{项目内容：用于智能送货的无人机与智能车联动系统是以道路车辆自身传感器的智能感知与空中无人机的信息交互数据智能为理念。依靠智能车机通信技术提供为交通信息的交叉融合处理提供有效数据，实现车机动态信息实时交互。增强了车对道路交通环境动态的感知能力，使得无人车辨识对自身最优交通信息，做出合理的交通驾驶行为。提高道路行驶安全和交通利用效，减少了车辆拥堵情况和交通事故的发生。车机联动技术为解决复杂交通问题供了一种有效的方法，并对智能交通的无人车发展具有深远意义。\\
+主要职责：无人机的UWB定位，目标的识别追踪，SLAM建图，YOLO网络移植，PID调节，蒙特卡洛定位，A*搜索算法避障。}
+	\cvitem{2018/04-2018/10}{基于多空基平台的目标识别与跟踪系统}{成~~~~员}{项目内容： 实验室老师与中国工程物理研究院电子所合作项目，研究内容涉及自组网通信，机群编队，航迹规划，障碍物检测与避障，搜寻策略制定，目标检测与跟踪。本项目利用zigbee实现无人机自组网。基于DJI M100开源硬件和OSDK框架实现对15架无人机的底层控制，从而将15架分为三组，实现头机领航，从机跟随的编队控制和队形变换。通过Guidance完成周围障碍物检测。使用DWA算法进行局部规划实现避障。利用apriltags实现车载tardet的标签检测与三维解算。基于UWB完成精确定位，实现对车辆包围。\\主要职责： 对UWB传回的距离信息，使用chan式算法进行解算，得出无人机和目标车辆在基站构成的坐标系中的x坐标和y坐标（精度可达到10cm左右）。从而实现无人机机群对目标车辆的包围。制作机械结构实现无人机投放物品。 
+}
+	\cvitem{2016/11-2018/07}{基于多普勒雷达体势识别的智能家居控制}{负责人}{项目内容： 以 STM32F030F4P6 为核心、综合手势传感器、温度传感器、音乐芯片等，实现通过识别手势的晃动，解算出手势的方向控制切换歌曲、测量温度等功能。\\主要职责： 电源电路设计，按键、报警与显示电路设计 ，STM32F030核心部分设计。}
+\end{cvtable}
+
+\cvsignature
+
+\newpage
+\makebacksidebar
+~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}~~~~~~~~\circleicon{\faStar}
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 校园经历}
+\begin{cvtable}
+	\cvitem{2017/09-2018/07}{航光北斗创新俱乐部  }{主~~~~席}{为新成员培训C语言、SolidWorks使用、绘制PCB、智能车制作等、与中电二十所合作创立创新领航众创空间。}
+	\cvitem{2017/04-2018/07}{空间院科学技术协会 }{副主席}{负责院科协技术培训（培训内容为焊接pcb、51单片机）。}
+	
+\end{cvtable}
+
+
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 竞赛获奖}
+\begin{cvtable}
+	\cvitem{2019/07}{国家大学生创新创业训练计划项目验收优秀}{}{}
+	\cvitem{2019/05}{ICRA 2019 DJI RoboMaster人工智能挑战赛 三等奖}{}{}
+	\cvitem{2018/07}{省级大学生创新创业训练计划项目验收优秀}{}{}
+	\cvitem{2017/08}{第十二届全国大学生“恩智浦”杯智能汽车竞赛，西部赛区三等奖}{}{}
+\end{cvtable}
+
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 资格证书}
+\begin{cvtable}
+	\cvitem{208/06}{英语四级}{}{}
+	\cvitem{2017/03}{全国计算机等级考试二级c语言程序设计}{}{}
+\end{cvtable}
+
+\cvsection{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\heiti 兴趣爱好}
+
+\LARGE
+\faBicycle~~~~~骑行~~~~~\faLifeRing~~~~~游泳~~~~~\faUniversity~~~~~观光
+\\
+\faMusic~~~~~~音乐~~~~~\faKeyboard~~~~~编程~~~~\faGamepad~~~~~游戏
+
+\normalsize
+
+\cvsignature
+
+\end{document} 
